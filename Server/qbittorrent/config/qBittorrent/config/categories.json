@@ -1,0 +1,26 @@
+{
+    "Books": {
+        "save_path": "/Media/InjestBooks"
+    },
+    "Movies": {
+        "save_path": "/Media/Movies"
+    },
+    "Music": {
+        "save_path": "/Media/Music"
+    },
+    "Other": {
+        "save_path": "/Media/Downloads/Other"
+    },
+    "Sonarr-TV": {
+        "save_path": ""
+    },
+    "TV": {
+        "save_path": "/Media/TV"
+    },
+    "lidarr": {
+        "save_path": ""
+    },
+    "radarr": {
+        "save_path": ""
+    }
+}

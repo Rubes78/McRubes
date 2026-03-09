@@ -1,0 +1,77 @@
+title: McRubes
+theme: dark
+color: slate
+headerStyle: boxedWidgets
+useEqualHeights: true
+hideVersion: true
+target: _blank
+
+quicklaunch:
+  searchDescriptions: true
+  hideInternetSearch: true
+  showSearchSuggestions: true
+  hideVisitURL: true
+  provider: google
+
+layout:
+  # ── Dad Tab ──────────────────────────────────────────────────────────────
+  "Watch & Request":
+    tab: Dad
+    icon: mdi-play-circle
+    style: row
+    columns: 4
+
+  "Get Media":
+    tab: Dad
+    icon: mdi-television-play
+    style: row
+    columns: 4
+
+  "Books & Files":
+    tab: Dad
+    icon: mdi-bookshelf
+    style: row
+    columns: 4
+
+  # ── Admin Tab ─────────────────────────────────────────────────────────────
+  McRubes:
+    tab: Admin
+    icon: mdi-server
+    style: row
+    columns: 4
+
+  Media:
+    tab: Admin
+    icon: mdi-play-circle
+    style: row
+    columns: 4
+
+  Downloads:
+    tab: Admin
+    icon: mdi-download-circle
+    style: row
+    columns: 4
+
+  "Media Management":
+    tab: Admin
+    icon: mdi-television-play
+    style: row
+    columns: 4
+
+  Books:
+    tab: Admin
+    icon: mdi-bookshelf
+    style: row
+    columns: 4
+
+  Files:
+    tab: Admin
+    icon: mdi-folder
+    style: row
+    columns: 4
+
+  "Docker Control":
+    tab: Admin
+    icon: mdi-docker
+    style: row
+    columns: 4

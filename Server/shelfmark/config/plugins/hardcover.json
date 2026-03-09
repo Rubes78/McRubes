@@ -1,0 +1,8 @@
+{
+  "HARDCOVER_ENABLED": false,
+  "HARDCOVER_DEFAULT_SORT": "relevance",
+  "HARDCOVER_EXCLUDE_COMPILATIONS": false,
+  "HARDCOVER_EXCLUDE_UNRELEASED": false,
+  "HARDCOVER_API_KEY": null,
+  "test_connection": ""
+}

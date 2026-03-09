@@ -1,0 +1,313 @@
+---
+# McRubes Media Server — Full Stack
+# All services run as root (PUID=0, PGID=0)
+# Media at /Media | App configs at /Docker/Server
+# To add a service: append to this file and run: docker compose up -d
+
+services:
+
+  # ---------------------------------------------------------------------------
+  # PLEX — Media Server
+  # Hardware transcoding via Intel Quick Sync (/dev/dri passthrough)
+  # ---------------------------------------------------------------------------
+  plex:
+    image: lscr.io/linuxserver/plex:latest
+    container_name: plex
+    network_mode: host
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+      - VERSION=docker
+      - PLEX_CLAIM=${PLEX_CLAIM}
+    volumes:
+      - ${DOCKER_PATH}/plex/config:/config
+      - /Transcode:/Transcode
+      - ${MEDIA_PATH}:/Media
+    devices:
+      - /dev/dri:/dev/dri
+    restart: unless-stopped
+
+  # ---------------------------------------------------------------------------
+  # MAINTAINERR — Automatic media cleanup (delete after watched)
+  # ---------------------------------------------------------------------------
+  maintainerr:
+    image: ghcr.io/maintainerr/maintainerr:latest
+    container_name: maintainerr
+    environment:
+      - TZ=${TZ}
+    volumes:
+      - ${DOCKER_PATH}/maintainerr/data:/opt/data
+    ports:
+      - 6246:6246
+    restart: unless-stopped
+
+  # ---------------------------------------------------------------------------
+  # SONARR — TV Show Management
+  # ---------------------------------------------------------------------------
+  sonarr:
+    image: lscr.io/linuxserver/sonarr:latest
+    container_name: sonarr
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+    volumes:
+      - ${DOCKER_PATH}/sonarr/config:/config
+      - ${MEDIA_PATH}:/Media
+    ports:
+      - 8989:8989
+    restart: unless-stopped
+
+  # ---------------------------------------------------------------------------
+  # RADARR — Movie Management
+  # ---------------------------------------------------------------------------
+  radarr:
+    image: lscr.io/linuxserver/radarr:latest
+    container_name: radarr
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+    volumes:
+      - ${DOCKER_PATH}/radarr/config:/config
+      - ${MEDIA_PATH}:/Media
+    ports:
+      - 7878:7878
+    restart: unless-stopped
+
+  # ---------------------------------------------------------------------------
+  # PROWLARR — Indexer Manager (feeds Sonarr & Radarr)
+  # ---------------------------------------------------------------------------
+  prowlarr:
+    image: lscr.io/linuxserver/prowlarr:latest
+    container_name: prowlarr
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+    volumes:
+      - ${DOCKER_PATH}/prowlarr/config:/config
+    ports:
+      - 9696:9696
+    restart: unless-stopped
+
+  # ---------------------------------------------------------------------------
+  # BAZARR — Subtitle Manager
+  # ---------------------------------------------------------------------------
+  bazarr:
+    image: lscr.io/linuxserver/bazarr:latest
+    container_name: bazarr
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+    volumes:
+      - ${DOCKER_PATH}/bazarr/config:/config
+      - ${MEDIA_PATH}:/Media
+    ports:
+      - 6767:6767
+    restart: unless-stopped
+
+  # ---------------------------------------------------------------------------
+  # OVERSEERR — Media Request Management
+  # ---------------------------------------------------------------------------
+  overseerr:
+    image: ghcr.io/seerr-team/seerr:latest
+    container_name: overseerr
+    user: root
+    init: true
+    environment:
+      - LOG_LEVEL=info
+      - TZ=${TZ}
+      - PORT=5055
+    volumes:
+      - ${DOCKER_PATH}/overseerr/config:/app/config
+    ports:
+      - 5055:5055
+    restart: unless-stopped
+
+  # ---------------------------------------------------------------------------
+  # QBITTORRENT + PIA VPN — Torrent Client with VPN
+  # ---------------------------------------------------------------------------
+  qbittorrent:
+    image: j4ym0/pia-qbittorrent
+    container_name: qbittorrent
+    cap_add:
+      - NET_ADMIN
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+      - REGION=${PIA_REGION}
+      - USER=${PIA_USER}
+      - PASSWORD=${PIA_PASSWORD}
+      - PORT_FORWARDING=true
+    volumes:
+      - ${DOCKER_PATH}/qbittorrent/config:/config
+      - ${MEDIA_PATH}:/Media
+    ports:
+      - 8888:8888
+    restart: unless-stopped
+
+  # ---------------------------------------------------------------------------
+  # SABNZBD — Usenet Downloader
+  # Internal port 8080, exposed on 7777 to match existing setup
+  # ---------------------------------------------------------------------------
+  sabnzbd:
+    image: lscr.io/linuxserver/sabnzbd:latest
+    container_name: sabnzbd
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+    volumes:
+      - ${DOCKER_PATH}/sabnzbd/config:/config
+      - ${MEDIA_PATH}:/Media
+    ports:
+      - 7777:8080
+    restart: unless-stopped
+
+  # ---------------------------------------------------------------------------
+  # CALIBRE-WEB-AUTOMATED — Book Library with Auto-Import
+  # Library at /Media/Books | Drop books in /Media/Downloads/InjestBooks to auto-import
+  # ---------------------------------------------------------------------------
+  calibre-web-automated:
+    image: crocodilestick/calibre-web-automated:latest
+    container_name: calibre-web-automated
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+    volumes:
+      - ${DOCKER_PATH}/calibre-web-automated/config:/config
+      - ${MEDIA_PATH}/Books:/calibre-library
+      - ${MEDIA_PATH}/Downloads/InjestBooks:/cwa-book-ingest
+    ports:
+      - 8084:8083
+    restart: unless-stopped
+
+  # ---------------------------------------------------------------------------
+  # SHELFMARK — Book Tracker & Downloader
+  # ---------------------------------------------------------------------------
+  shelfmark:
+    image: ghcr.io/calibrain/shelfmark:latest
+    container_name: shelfmark
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+    volumes:
+      - ${DOCKER_PATH}/shelfmark/config:/config
+      - ${MEDIA_PATH}/Downloads/InjestBooks:/Media/Downloads/InjestBooks
+      - ${MEDIA_PATH}:/Media
+    ports:
+      - 8085:8084
+    restart: unless-stopped
+
+  # ---------------------------------------------------------------------------
+  # PORTAINER — Docker Management UI
+  # ---------------------------------------------------------------------------
+  portainer:
+    image: portainer/portainer-ce:latest
+    container_name: portainer
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ${DOCKER_PATH}/portainer/data:/data
+    ports:
+      - 9000:9000
+    restart: unless-stopped
+
+  # ---------------------------------------------------------------------------
+  # WHAT'S UP DOCKER — Container Update Tracker
+  # Watches only this local machine
+  # ---------------------------------------------------------------------------
+  wud:
+    image: getwud/wud
+    container_name: wud
+    environment:
+      - WUD_WATCHER_LOCAL_SOCKET=/var/run/docker.sock
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - 3333:3000
+    restart: unless-stopped
+
+  # ---------------------------------------------------------------------------
+  # WATCHTOWER — Automatic Container Updates
+  # API available on port 1040 | Token: mcrubens
+  # ---------------------------------------------------------------------------
+  watchtower:
+    image: containrrr/watchtower
+    container_name: watchtower
+    environment:
+      - TZ=${TZ}
+      - DOCKER_API_VERSION=1.41
+      - WATCHTOWER_CLEANUP=true
+      - WATCHTOWER_POLL_INTERVAL=43200
+      - WATCHTOWER_HTTP_API=true
+      - WATCHTOWER_HTTP_API_TOKEN=${WATCHTOWER_TOKEN}
+      - WATCHTOWER_HTTP_API_METRICS=true
+      - WATCHTOWER_HTTP_API_PERIODIC_POLLS=true
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - 1040:8080
+    restart: unless-stopped
+
+  # ---------------------------------------------------------------------------
+  # GLANCES — System Resource Monitor (used by Homepage widgets)
+  # ---------------------------------------------------------------------------
+  glances:
+    image: nicolargo/glances:latest-full
+    container_name: glances
+    pid: host
+    network_mode: host
+    environment:
+      - GLANCES_OPT=-w
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /etc/os-release:/etc/os-release:ro
+    restart: unless-stopped
+
+  # ---------------------------------------------------------------------------
+  # HOMEPAGE — Dashboard
+  # Accessible at http://McRubes:3000
+  # ---------------------------------------------------------------------------
+  homepage:
+    image: ghcr.io/gethomepage/homepage:latest
+    container_name: homepage
+    network_mode: host
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - HOMEPAGE_ALLOWED_HOSTS=*
+    volumes:
+      - ${DOCKER_PATH}/homepage/config:/app/config
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ${MEDIA_PATH}:/Media:ro
+    restart: unless-stopped
+
+  # ---------------------------------------------------------------------------
+  # FILEBROWSER — Web-based file manager
+  # Accessible at http://mcrubes.local:8080
+  # ---------------------------------------------------------------------------
+  filebrowser:
+    image: filebrowser/filebrowser:latest
+    container_name: filebrowser
+    ports:
+      - "8080:80"
+    volumes:
+      - type: bind
+        source: /Media
+        target: /srv
+        bind:
+          propagation: shared
+      - ${DOCKER_PATH}/filebrowser/database:/database
+      - ${DOCKER_PATH}/filebrowser/config:/config
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+    privileged: true
+    user: "0:0"
+    restart: unless-stopped

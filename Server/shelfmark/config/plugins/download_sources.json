@@ -1,0 +1,33 @@
+{
+  "FAST_SOURCES_DISPLAY": [
+    {
+      "id": "aa-fast",
+      "enabled": true
+    },
+    {
+      "id": "libgen",
+      "enabled": true
+    }
+  ],
+  "SOURCE_PRIORITY": [
+    {
+      "id": "aa-slow-nowait",
+      "enabled": true
+    },
+    {
+      "id": "aa-slow-wait",
+      "enabled": true
+    },
+    {
+      "id": "welib",
+      "enabled": true
+    },
+    {
+      "id": "zlib",
+      "enabled": true
+    }
+  ],
+  "MAX_RETRY": 10,
+  "DEFAULT_SLEEP": 5,
+  "AA_CONTENT_TYPE_ROUTING": false
+}

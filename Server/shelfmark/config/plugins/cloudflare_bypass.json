@@ -1,0 +1,7 @@
+{
+  "USE_CF_BYPASS": true,
+  "USING_EXTERNAL_BYPASSER": false,
+  "EXT_BYPASSER_URL": "http://flaresolverr:8191",
+  "EXT_BYPASSER_PATH": "/v1",
+  "EXT_BYPASSER_TIMEOUT": 60000
+}

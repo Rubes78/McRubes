@@ -1,0 +1,32 @@
+# Top bar widgets
+
+- search:
+    provider: google
+    target: _blank
+
+- datetime:
+    text_size: md
+    locale: en
+    format:
+      timeStyle: long
+      dateStyle: long
+      hour12: true
+
+- openmeteo:
+    latitude: 35.10343297634417
+    longitude: -89.90730791631668
+    units: imperial
+    cache: 15
+    format:
+      maximumFractionDigits: 0
+
+- glances:
+    url: http://localhost:61208
+    href: http://mcrubes.local:61208
+    version: 4
+    label: McRubes
+    cputemp: true
+    units: imperial
+    tempmin: 35
+    tempmax: 90
+    expanded: true

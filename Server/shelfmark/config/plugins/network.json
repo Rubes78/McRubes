@@ -1,0 +1,7 @@
+{
+  "CERTIFICATE_VALIDATION": "enabled",
+  "CUSTOM_DNS": "auto",
+  "USE_DOH": true,
+  "USING_TOR": false,
+  "PROXY_MODE": "none"
+}

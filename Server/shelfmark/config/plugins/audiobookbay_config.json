@@ -1,0 +1,7 @@
+{
+  "ABB_ENABLED": false,
+  "ABB_HOSTNAME": "",
+  "ABB_PAGE_LIMIT": 1,
+  "ABB_EXACT_PHRASE": false,
+  "ABB_RATE_LIMIT_DELAY": 1.0
+}

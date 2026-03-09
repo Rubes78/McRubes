@@ -1,0 +1,5 @@
+{
+  "IRC_PORT": 6697,
+  "IRC_USE_TLS": true,
+  "IRC_CACHE_TTL": "2592000"
+}

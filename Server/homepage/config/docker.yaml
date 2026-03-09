@@ -1,0 +1,2 @@
+mcrubens:
+  socket: /var/run/docker.sock

@@ -1,0 +1,8 @@
+{
+  "PROWLARR_ENABLED": true,
+  "PROWLARR_INDEXERS": [1, 2, 3, 4, 5, 6, 7, 8],
+  "PROWLARR_AUTO_EXPAND": false,
+  "PROWLARR_URL": "http://172.18.0.1:9696",
+  "PROWLARR_API_KEY": "77a4b051bc8a4549bda0e3bedae0a7f3",
+  "test_prowlarr": ""
+}

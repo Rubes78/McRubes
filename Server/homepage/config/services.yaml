@@ -1,0 +1,263 @@
+# McRubes Homepage Services
+
+# ============================================================================
+# DAD TAB
+# ============================================================================
+
+- "Watch & Request":
+    - Plex:
+        href: http://mcrubes.local:32400/web
+        icon: plex
+        description: Watch movies and TV
+        server: mcrubens
+        container: plex
+        widget:
+          type: plex
+          url: http://localhost:32400
+          key: f6wrVCK4p2-8tqyTSkiQ
+          fields: ["streams"]
+    - Overseerr:
+        href: http://mcrubes.local:5055
+        icon: seerr
+        description: Request movies and TV shows
+        server: mcrubens
+        container: overseerr
+
+- "Get Media":
+    - Sonarr:
+        href: http://mcrubes.local:8989
+        icon: sonarr
+        description: TV show downloads
+        server: mcrubens
+        container: sonarr
+        widget:
+          type: sonarr
+          url: http://localhost:8989
+          key: 08c159a9e0474009aded93a30d4e4681
+          enableQueue: true
+          fields: ["wanted", "queued", "series"]
+    - Radarr:
+        href: http://mcrubes.local:7878
+        icon: radarr
+        description: Movie downloads
+        server: mcrubens
+        container: radarr
+        widget:
+          type: radarr
+          url: http://localhost:7878
+          key: ffeec2c86e954a1aa064cfb98c1d8509
+          enableQueue: true
+          fields: ["wanted", "missing", "queued", "movies"]
+    - qBittorrent:
+        href: http://mcrubes.local:8888
+        icon: qbittorrent
+        description: Add torrents manually
+        server: mcrubens
+        container: qbittorrent
+        widget:
+          type: qbittorrent
+          url: http://localhost:8888
+          username: admin
+          password: mcrubens
+          enableLeechProgress: true
+          fields: ["download", "seed", "upload"]
+    - SABnzbd:
+        href: http://mcrubes.local:7777
+        icon: sabnzbd
+        description: Usenet downloader
+        server: mcrubens
+        container: sabnzbd
+        widget:
+          type: sabnzbd
+          url: http://localhost:7777
+          key: b07ad88d9baf4bf3a51499133821f60a
+
+- "Books & Files":
+    - ShelfMark:
+        href: http://mcrubes.local:8085
+        icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/bookstack.svg
+        description: Find and download books
+        server: mcrubens
+        container: shelfmark
+    - Calibre Web:
+        href: http://mcrubes.local:8084
+        icon: calibre
+        description: Read your book library
+        server: mcrubens
+        container: calibre-web-automated
+        widget:
+          type: calibreweb
+          url: http://localhost:8084
+          username: mcrubes
+          password: mcrubes
+    - FileBrowser:
+        href: http://mcrubes.local:8080
+        icon: filebrowser
+        description: Browse and manage files
+        server: mcrubens
+        container: filebrowser
+
+# ============================================================================
+# ADMIN TAB
+# ============================================================================
+
+- McRubes:
+    - System Info:
+        widget:
+          type: glances
+          url: http://localhost:61208
+          version: 4
+          metric: cpu
+    - CPU Temp:
+        widget:
+          type: glances
+          url: http://localhost:61208
+          version: 4
+          metric: sensors:Core 0
+    - Memory:
+        widget:
+          type: glances
+          url: http://localhost:61208
+          version: 4
+          metric: mem
+    - Media Drive:
+        widget:
+          type: glances
+          url: http://localhost:61208
+          version: 4
+          metric: fs:/Media
+    - Network:
+        widget:
+          type: glances
+          url: http://localhost:61208
+          version: 4
+          metric: network:enp0s31f6
+
+- Media:
+    - Plex:
+        href: http://mcrubes.local:32400/web
+        icon: plex
+        server: mcrubens
+        container: plex
+        widget:
+          type: plex
+          url: http://localhost:32400
+          key: f6wrVCK4p2-8tqyTSkiQ
+          fields: ["streams"]
+    - Maintainerr:
+        href: http://mcrubes.local:6246
+        icon: maintainerr
+        server: mcrubens
+        container: maintainerr
+
+- Downloads:
+    - qBittorrent:
+        href: http://mcrubes.local:8888
+        icon: qbittorrent
+        server: mcrubens
+        container: qbittorrent
+        widget:
+          type: qbittorrent
+          url: http://localhost:8888
+          username: admin
+          password: mcrubens
+          enableLeechProgress: true
+          fields: ["download", "seed", "upload"]
+    - SABnzbd:
+        href: http://mcrubes.local:7777
+        icon: sabnzbd
+        server: mcrubens
+        container: sabnzbd
+        widget:
+          type: sabnzbd
+          url: http://localhost:7777
+          key: b07ad88d9baf4bf3a51499133821f60a
+
+- "Media Management":
+    - Sonarr:
+        href: http://mcrubes.local:8989
+        icon: sonarr
+        server: mcrubens
+        container: sonarr
+        widget:
+          type: sonarr
+          url: http://localhost:8989
+          key: 08c159a9e0474009aded93a30d4e4681
+          enableQueue: true
+          fields: ["wanted", "queued", "series"]
+    - Radarr:
+        href: http://mcrubes.local:7878
+        icon: radarr
+        server: mcrubens
+        container: radarr
+        widget:
+          type: radarr
+          url: http://localhost:7878
+          key: ffeec2c86e954a1aa064cfb98c1d8509
+          enableQueue: true
+          fields: ["wanted", "missing", "queued", "movies"]
+    - Prowlarr:
+        href: http://mcrubes.local:9696
+        icon: prowlarr
+        server: mcrubens
+        container: prowlarr
+    - Bazarr:
+        href: http://mcrubes.local:6767
+        icon: bazarr
+        server: mcrubens
+        container: bazarr
+        widget:
+          type: bazarr
+          url: http://localhost:6767
+          key: 66885f8e525f697f8f73ce1e17e70f17
+    - Overseerr:
+        href: http://mcrubes.local:5055
+        icon: seerr
+        server: mcrubens
+        container: overseerr
+
+- Books:
+    - Calibre Web:
+        href: http://mcrubes.local:8084
+        icon: calibre
+        server: mcrubens
+        container: calibre-web-automated
+        widget:
+          type: calibreweb
+          url: http://localhost:8084
+          username: mcrubes
+          password: mcrubes
+    - ShelfMark:
+        href: http://mcrubes.local:8085
+        icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/bookstack.svg
+        server: mcrubens
+        container: shelfmark
+
+- Files:
+    - FileBrowser:
+        href: http://mcrubes.local:8080
+        icon: filebrowser
+        server: mcrubens
+        container: filebrowser
+
+- "Docker Control":
+    - Portainer:
+        href: http://mcrubes.local:9000
+        icon: portainer
+        server: mcrubens
+        container: portainer
+    - WUD:
+        href: http://mcrubes.local:3333
+        icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/what-s-up-docker.svg
+        server: mcrubens
+        container: wud
+        widget:
+          type: whatsupdocker
+          url: http://localhost:3333
+    - Watchtower:
+        server: mcrubens
+        container: watchtower
+        widget:
+          type: watchtower
+          url: http://localhost:1040
+          key: mcrubens

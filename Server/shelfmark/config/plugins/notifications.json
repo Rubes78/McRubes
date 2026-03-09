@@ -1,0 +1,18 @@
+{
+  "ADMIN_NOTIFICATION_ROUTES": [
+    {
+      "event": [
+        "all"
+      ],
+      "url": ""
+    }
+  ],
+  "USER_NOTIFICATION_ROUTES": [
+    {
+      "event": [
+        "all"
+      ],
+      "url": ""
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "SUPPORTED_FORMATS": [
+    "epub",
+    "mobi",
+    "azw3",
+    "fb2",
+    "djvu",
+    "cbz",
+    "cbr"
+  ],
+  "SUPPORTED_AUDIOBOOK_FORMATS": [
+    "m4b",
+    "mp3"
+  ],
+  "BOOK_LANGUAGE": [
+    "en"
+  ],
+  "SEARCH_MODE": "direct",
+  "METADATA_PROVIDER": "hardcover",
+  "onboarding_complete": true,
+  "CALIBRE_WEB_URL": "http://mcrubes.local:8084",
+  "DOWNLOAD_DIR": "/Media/Downloads/InjestBooks"
+}

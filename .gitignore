@@ -1,0 +1,96 @@
+# macOS junk
+.DS_Store
+._.DS_Store
+**/.DS_Store
+**/._.DS_Store
+._*
+
+# Credentials
+Compose/.env
+
+# Database files (too large / regenerated)
+**/*.db
+**/*.db-shm
+**/*.db-wal
+**/*.sqlite
+**/*.sqlite-wal
+**/*.sqlite-shm
+
+# Logs
+**/*.log
+**/logs/
+**/log/
+
+# Plex (massive, not worth storing)
+Server/plex/
+
+# Calibre library thumbnails and cache
+Server/calibre-web-automated/config/thumbnails/
+Server/calibre-web-automated/config/cwa_ingest_status
+Server/calibre-web-automated/config/cwa_ingest_retry_queue
+Server/calibre-web-automated/config/processed_books/
+Server/calibre-web-automated/config/log_archive/
+
+# Portainer data
+Server/portainer/
+
+# Maintainerr data
+Server/maintainerr/
+
+# FileBrowser database
+Server/filebrowser/
+
+# Cache files
+**/.cache/
+**/__pycache__/
+**/cache/
+
+# Audiobookshelf (not in current stack)
+Server/audiobookshelf/
+
+# Prowlarr auto-downloaded index definitions (regenerated on startup)
+Server/prowlarr/config/Definitions/
+
+# Encryption keys (sensitive)
+Server/calibre-web-automated/config/.key
+
+# Services not in current stack
+Server/lidarr/
+Server/audiobookshelf/
+
+# Overseerr DB (large, regenerated)
+Server/overseerr/config/db/
+
+# PID files
+**/*.pid
+
+# Calibre-web migration markers
+Server/calibre-web-automated/config/.cwa_migrations/
+Server/calibre-web-automated/config/.config/
+
+# Tautulli (removed from stack)
+Server/tautulli/
+
+# Auto-generated ASP keys
+**/asp/
+
+# Media covers (auto-downloaded)
+**/MediaCover/
+
+# Lock files
+**/*.lock
+**/lockfile
+
+# Binary / large data files
+**/*.mmdb
+**/*.sab
+**/*.zip
+
+# Shelfmark covers and secrets
+Server/shelfmark/config/covers/
+Server/shelfmark/config/.flask_secret
+
+# qBittorrent geo DB
+Server/qbittorrent/config/qBittorrent/data/
+
+# WireGuard private keys (stored separately)

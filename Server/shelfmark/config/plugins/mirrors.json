@@ -1,0 +1,12 @@
+{
+  "AA_BASE_URL": "auto",
+  "AA_MIRROR_URLS": [
+    "https://annas-archive.gl",
+    "https://annas-archive.pk",
+    "https://annas-archive.vg",
+    "https://annas-archive.gd"
+  ],
+  "ZLIB_PRIMARY_URL": "https://z-lib.fm",
+  "WELIB_PRIMARY_URL": "https://welib.org",
+  "_AA_MIRRORS_DEFAULTS_HASH": "75ef23a50441bdd9b6ea08905ef37a094331fefd38e51cc008301a837fbca264"
+}
