@@ -4,6 +4,12 @@
 # DAD TAB
 # ============================================================================
 
+- "":
+    - How to Use McRubes:
+        href: http://mcrubes.local:8090
+        icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/readme.svg
+        description: New here? Start with the guide
+
 - "Watch & Request":
     - Plex:
         href: http://mcrubes.local:32400/web

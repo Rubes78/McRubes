@@ -206,6 +206,18 @@ services:
     restart: unless-stopped
 
   # ---------------------------------------------------------------------------
+  # GUIDE — Dad's user guide (static HTML, served by nginx)
+  # ---------------------------------------------------------------------------
+  guide:
+    image: nginx:alpine
+    container_name: guide
+    volumes:
+      - ${DOCKER_PATH}/guide:/usr/share/nginx/html:ro
+    ports:
+      - "8090:80"
+    restart: unless-stopped
+
+  # ---------------------------------------------------------------------------
   # PORTAINER — Docker Management UI
   # ---------------------------------------------------------------------------
   portainer:
@@ -302,7 +314,12 @@ services:
         source: /Media
         target: /srv
         bind:
-          propagation: shared
+          propagation: rslave
+      - type: bind
+        source: /USB
+        target: /srv/USB
+        bind:
+          propagation: rslave
       - ${DOCKER_PATH}/filebrowser/database:/database
       - ${DOCKER_PATH}/filebrowser/config:/config
     environment:

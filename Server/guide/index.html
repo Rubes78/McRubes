@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>McRubes Guide</title>
+  <style>
+    :root {
+      --bg: #0f0f13;
+      --card: #1a1a24;
+      --border: #2a2a3a;
+      --accent: #e5a00d;
+      --text: #e0e0e0;
+      --muted: #888;
+      --green: #4caf50;
+      --blue: #5b8dee;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 18px;
+      line-height: 1.7;
+      padding: 2rem 1rem 4rem;
+    }
+
+    .container {
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0 3rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 3rem;
+    }
+
+    header h1 {
+      font-size: 2.4rem;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    header p {
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      color: var(--accent);
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.8rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .card p {
+      margin-bottom: 0.8rem;
+    }
+
+    .card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .step {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      align-items: flex-start;
+    }
+
+    .step-num {
+      background: var(--accent);
+      color: #000;
+      font-weight: 700;
+      border-radius: 50%;
+      width: 2rem;
+      height: 2rem;
+      min-width: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.95rem;
+      margin-top: 0.15rem;
+    }
+
+    .step-text strong {
+      display: block;
+    }
+
+    .step-text {
+      flex: 1;
+    }
+
+    a.btn {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.6rem 1.4rem;
+      background: var(--accent);
+      color: #000;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    a.btn:hover { opacity: 0.85; }
+
+    .tip {
+      background: #1a2a1a;
+      border: 1px solid #2a4a2a;
+      border-radius: 8px;
+      padding: 1rem 1.2rem;
+      margin-top: 1rem;
+      font-size: 0.95rem;
+      color: #aaa;
+    }
+
+    .tip strong { color: var(--green); }
+
+    .callout {
+      background: #1a1a2e;
+      border-left: 4px solid var(--blue);
+      border-radius: 0 8px 8px 0;
+      padding: 1rem 1.2rem;
+      margin-top: 1rem;
+      font-size: 0.95rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 0.5rem;
+      font-size: 0.95rem;
+    }
+
+    th {
+      text-align: left;
+      color: var(--muted);
+      font-weight: 600;
+      padding: 0.4rem 0.6rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    td {
+      padding: 0.5rem 0.6rem;
+      border-bottom: 1px solid #1e1e2a;
+    }
+
+    tr:last-child td { border-bottom: none; }
+
+    .badge {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      border-radius: 99px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .badge-green { background: #1a3a1a; color: var(--green); }
+    .badge-yellow { background: #2a2000; color: var(--accent); }
+
+    section { margin-bottom: 3rem; }
+
+    .emoji { font-size: 1.3rem; }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <h1>McRubes Media Server</h1>
+    <p>Your personal Netflix — quick guide to watching and requesting content</p>
+  </header>
+
+  <!-- WATCHING -->
+  <section>
+    <h2><span class="emoji">🎬</span> Watching Movies &amp; TV Shows</h2>
+
+    <div class="card">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-text">
+          <strong>Open Plex on your TV, phone, or browser</strong>
+          On a browser, go to <a href="http://mcrubes.local:32401/web" style="color:var(--accent)">mcrubes.local:32401/web</a>
+          or use the Plex app on any device.
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-text">
+          <strong>Sign in with your Plex account</strong>
+          If you don't have one, create a free account at plex.tv — it takes 2 minutes.
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-text">
+          <strong>Find McRubes in your server list</strong>
+          Look for "McRubes" under "More &gt; Your Servers" and you'll see Movies and TV Shows.
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-text">
+          <strong>Pick something and press play</strong>
+          That's it. Subtitles, resume, and watchlists all work like Netflix.
+        </div>
+      </div>
+
+      <div class="tip">
+        <strong>Tip:</strong> If a video won't play, try pressing the settings icon (⚙) during playback and switching quality to "Original" or a lower option.
+      </div>
+    </div>
+  </section>
+
+  <!-- REQUESTING -->
+  <section>
+    <h2><span class="emoji">📥</span> Requesting New Movies or TV Shows</h2>
+
+    <div class="card">
+      <p>Don't see something you want to watch? Request it — it usually shows up within an hour.</p>
+
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-text">
+          <strong>Go to Overseerr</strong>
+          <a href="http://mcrubes.local:5055" style="color:var(--accent)">mcrubes.local:5055</a>
+          — sign in with your Plex account (same one from above).
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-text">
+          <strong>Search for what you want</strong>
+          Type the movie or show name in the search bar at the top.
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-text">
+          <strong>Click Request</strong>
+          Hit the orange "Request" button. For TV shows you can request specific seasons.
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-text">
+          <strong>Wait a bit, then watch</strong>
+          It downloads automatically and appears in Plex when ready — usually within an hour.
+        </div>
+      </div>
+
+      <div class="tip">
+        <strong>Note:</strong> Watched movies and shows are automatically cleaned up after 14 days to save space. Request again anytime if you want to rewatch.
+      </div>
+    </div>
+  </section>
+
+  <!-- QUICK LINKS -->
+  <section>
+    <h2><span class="emoji">🔗</span> Quick Links</h2>
+
+    <div class="card">
+      <table>
+        <thead>
+          <tr>
+            <th>What</th>
+            <th>Where</th>
+            <th>Use it for</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Dashboard</td>
+            <td><a href="http://mcrubes.local:3000" style="color:var(--accent)">mcrubes.local:3000</a></td>
+            <td>Overview of everything</td>
+          </tr>
+          <tr>
+            <td>Plex</td>
+            <td><a href="http://mcrubes.local:32401/web" style="color:var(--accent)">mcrubes.local:32401/web</a></td>
+            <td>Watch movies &amp; TV</td>
+          </tr>
+          <tr>
+            <td>Overseerr</td>
+            <td><a href="http://mcrubes.local:5055" style="color:var(--accent)">mcrubes.local:5055</a></td>
+            <td>Request new content</td>
+          </tr>
+          <tr>
+            <td>Books</td>
+            <td><a href="http://mcrubes.local:8084" style="color:var(--accent)">mcrubes.local:8084</a></td>
+            <td>Read &amp; send books to Kindle</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- BOOKS -->
+  <section>
+    <h2><span class="emoji">📚</span> Books &amp; Kindle</h2>
+
+    <div class="card">
+      <p>The server has a book library too. You can read books in your browser or send them to your Kindle.</p>
+
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-text">
+          <strong>Open Calibre Web</strong>
+          Go to <a href="http://mcrubes.local:8084" style="color:var(--accent)">mcrubes.local:8084</a>.
+          Login: <strong>mcrubes</strong> / <strong>mcrubes</strong>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-text">
+          <strong>Find a book and click Send to Kindle</strong>
+          The envelope icon next to any book sends it directly to your Kindle.
+        </div>
+      </div>
+
+      <div class="callout">
+        Want a book that isn't in the library? Let Mike know and he can add it.
+      </div>
+    </div>
+  </section>
+
+  <!-- TROUBLESHOOTING -->
+  <section>
+    <h2><span class="emoji">🛠</span> Something Not Working?</h2>
+
+    <div class="card">
+      <table>
+        <thead>
+          <tr>
+            <th>Problem</th>
+            <th>Try this</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Plex won't load</td>
+            <td>Wait 1–2 minutes and refresh. The server may be restarting.</td>
+          </tr>
+          <tr>
+            <td>Video buffers or won't play</td>
+            <td>Tap the ⚙ icon during playback → lower the quality or select "Original".</td>
+          </tr>
+          <tr>
+            <td>Can't find a show in Plex</td>
+            <td>It may not be downloaded yet. Request it in Overseerr and wait an hour.</td>
+          </tr>
+          <tr>
+            <td>Request says "already requested"</td>
+            <td>Someone already requested it — it'll show up soon.</td>
+          </tr>
+          <tr>
+            <td>Pages won't load at all</td>
+            <td>Make sure you're on the home Wi-Fi. These links only work at home.</td>
+          </tr>
+          <tr>
+            <td>Anything else</td>
+            <td>Text Mike 😄</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <footer style="text-align:center; color: var(--muted); font-size:0.85rem; margin-top:2rem;">
+    McRubes Media Server &mdash; made with ❤️ by Mike
+  </footer>
+
+</div>
+</body>
+</html>
