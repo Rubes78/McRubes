@@ -5,12 +5,33 @@
 # ============================================================================
 
 - "":
-    - How to Use McRubes:
-        href: http://mcrubes.local:8090
-        icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/readme.svg
-        description: New here? Start with the guide
+    - FileBrowser:
+        href: http://mcrubes.local:8080
+        icon: filebrowser
+        description: Browse and manage files
+        server: mcrubens
+        container: filebrowser
 
-- "Watch & Request":
+- "Books":
+    - ShelfMark:
+        href: http://mcrubes.local:8085
+        icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/bookstack.svg
+        description: Find and download books
+        server: mcrubens
+        container: shelfmark
+    - Calibre Web:
+        href: http://mcrubes.local:8084
+        icon: calibre
+        description: Read books or send to Kindle
+        server: mcrubens
+        container: calibre-web-automated
+        widget:
+          type: calibreweb
+          url: http://localhost:8084
+          username: mcrubes
+          password: mcrubes
+
+- "Movies & TV":
     - Plex:
         href: http://mcrubes.local:32400/web
         icon: plex
@@ -25,11 +46,17 @@
     - Overseerr:
         href: http://mcrubes.local:5055
         icon: seerr
-        description: Request movies and TV shows
+        description: Request something new to watch
         server: mcrubens
         container: overseerr
 
-- "Get Media":
+- Help:
+    - How to Use McRubes:
+        href: http://mcrubes.local:8090
+        icon: mdi-help-circle
+        description: New here? Start with the guide
+
+- "What's Downloading":
     - Sonarr:
         href: http://mcrubes.local:8989
         icon: sonarr
@@ -57,14 +84,14 @@
     - qBittorrent:
         href: http://mcrubes.local:8888
         icon: qbittorrent
-        description: Add torrents manually
+        description: Torrent downloader
         server: mcrubens
         container: qbittorrent
         widget:
           type: qbittorrent
           url: http://localhost:8888
-          username: admin
-          password: mcrubens
+          username: mcrubes
+          password: mcrubes
           enableLeechProgress: true
           fields: ["download", "seed", "upload"]
     - SABnzbd:
@@ -78,30 +105,6 @@
           url: http://localhost:7777
           key: b07ad88d9baf4bf3a51499133821f60a
 
-- "Books & Files":
-    - ShelfMark:
-        href: http://mcrubes.local:8085
-        icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/bookstack.svg
-        description: Find and download books
-        server: mcrubens
-        container: shelfmark
-    - Calibre Web:
-        href: http://mcrubes.local:8084
-        icon: calibre
-        description: Read your book library
-        server: mcrubens
-        container: calibre-web-automated
-        widget:
-          type: calibreweb
-          url: http://localhost:8084
-          username: mcrubes
-          password: mcrubes
-    - FileBrowser:
-        href: http://mcrubes.local:8080
-        icon: filebrowser
-        description: Browse and manage files
-        server: mcrubens
-        container: filebrowser
 
 # ============================================================================
 # ADMIN TAB
@@ -165,8 +168,8 @@
         widget:
           type: qbittorrent
           url: http://localhost:8888
-          username: admin
-          password: mcrubens
+          username: mcrubes
+          password: mcrubes
           enableLeechProgress: true
           fields: ["download", "seed", "upload"]
     - SABnzbd:
@@ -221,23 +224,6 @@
         icon: seerr
         server: mcrubens
         container: overseerr
-
-- Books:
-    - Calibre Web:
-        href: http://mcrubes.local:8084
-        icon: calibre
-        server: mcrubens
-        container: calibre-web-automated
-        widget:
-          type: calibreweb
-          url: http://localhost:8084
-          username: mcrubes
-          password: mcrubes
-    - ShelfMark:
-        href: http://mcrubes.local:8085
-        icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/bookstack.svg
-        server: mcrubens
-        container: shelfmark
 
 - Files:
     - FileBrowser:

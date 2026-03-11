@@ -15,21 +15,32 @@ quicklaunch:
 
 layout:
   # ── Dad Tab ──────────────────────────────────────────────────────────────
-  "Watch & Request":
+  "":
+    tab: Dad
+    style: row
+    columns: 4
+
+  Books:
+    tab: Dad
+    icon: mdi-bookshelf
+    style: row
+    columns: 4
+
+  "Movies & TV":
     tab: Dad
     icon: mdi-play-circle
     style: row
     columns: 4
 
-  "Get Media":
+  "What's Downloading":
     tab: Dad
-    icon: mdi-television-play
+    icon: mdi-download-circle
     style: row
     columns: 4
 
-  "Books & Files":
+  Help:
     tab: Dad
-    icon: mdi-bookshelf
+    icon: mdi-help-circle
     style: row
     columns: 4
 
@@ -55,12 +66,6 @@ layout:
   "Media Management":
     tab: Admin
     icon: mdi-television-play
-    style: row
-    columns: 4
-
-  Books:
-    tab: Admin
-    icon: mdi-bookshelf
     style: row
     columns: 4
 

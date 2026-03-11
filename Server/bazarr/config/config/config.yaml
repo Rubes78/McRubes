@@ -69,7 +69,6 @@ general:
   enable_strm_support: false
   enabled_integrations: []
   enabled_providers:
-  - opensubtitlescom
   - podnapisi
   - yifysubtitles
   external_webhook_password: ''

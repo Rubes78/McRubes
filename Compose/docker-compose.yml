@@ -142,7 +142,7 @@ services:
       - REGION=${PIA_REGION}
       - USER=${PIA_USER}
       - PASSWORD=${PIA_PASSWORD}
-      - PORT_FORWARDING=true
+      - PORT_FORWARDING=false
     volumes:
       - ${DOCKER_PATH}/qbittorrent/config:/config
       - ${MEDIA_PATH}:/Media

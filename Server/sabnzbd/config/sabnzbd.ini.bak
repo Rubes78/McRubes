@@ -11,7 +11,7 @@ interface_settings = ""
 queue_limit = 20
 config_lock = 0
 fixed_ports = 1
-notified_new_skin = 0
+notified_new_skin = 2
 direct_unpack_tested = 0
 sorters_converted = 1
 check_new_rel = 1
@@ -433,7 +433,7 @@ name = audio
 order = 3
 pp = ""
 script = Default
-dir = /Media/Music
+dir = /Media/Downloads/complete
 newzbin = ""
 priority = -100
 [[music]]
